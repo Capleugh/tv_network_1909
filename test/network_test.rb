@@ -31,6 +31,15 @@ class NetworkTest < Minitest::Test
     assert_equal [@knight_rider, @parks_and_rec], @nbc.shows
   end
 
+  def test_it_can_find_full_character_list
+    @nbc.add_show(@knight_rider)
+    @nbc.add_show(@parks_and_rec)
+
+    expected = [@michael_knight, @kitt, @leslie_knope, @ron_swanson]
+    
+    assert_equal expected, @nbc.full_character_list
+  end
+
   def test_it_can_find_highest_paid_actor
     @nbc.add_show(@knight_rider)
     @nbc.add_show(@parks_and_rec)

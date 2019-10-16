@@ -10,26 +10,26 @@ class Network
     @shows.push(show)
   end
 
-  def highest_paid_actor
-    characters = @shows.map do |show|
+  def full_character_list
+    @shows.map do |show|
       show.characters
     end.flatten
+  end
 
-    characters.max_by do |char|
+  def highest_paid_actor
+    full_character_list.max_by do |char|
       char.salary
     end.actor
   end
 
   def payroll
-    # you want a hash with key of name and value of salary
-    characters = @shows.map do |show|
-      show.characters
-    end.flatten
-
-    characters.reduce({}) do |payroll, char|
+    # hash with key of name and value of salary
+    full_character_list.reduce({}) do |payroll, char|
       # require "pry"; binding.pry
       payroll[char.actor] = char.salary
       payroll
     end
   end
 end
+
+# !!!! I understand reduce now! yay!
