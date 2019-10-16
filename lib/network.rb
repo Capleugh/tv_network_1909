@@ -19,4 +19,15 @@ class Network
       char.salary
     end.actor
   end
+
+  def payroll
+    # you want a hash with key of name and value of salary
+    characters = @shows.map do |show|
+      show.characters
+    end.flatten
+
+    characters.reduce({}) do |payroll, char|
+      payroll[char.name] = char.salary
+    end
+  end
 end
