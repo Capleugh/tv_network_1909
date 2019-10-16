@@ -27,7 +27,9 @@ class Network
     end.flatten
 
     characters.reduce({}) do |payroll, char|
-      payroll[char.name] = char.salary
+      # require "pry"; binding.pry
+      payroll[char.actor] = char.salary
+      payroll
     end
   end
 end
